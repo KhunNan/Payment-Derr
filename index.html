@@ -1,794 +1,640 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เสมียร อีเว๊นนนนนนนนน - Splitmate</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #FAF6EF;
-      --card-bg: #FFFFFF;
-      --primary-red: #A31D1D;
-      --accent-red: #700B0B;
-      --text-dark: #2C1810;
-      --text-muted: #7A6860;
-      --border-color: #E8D8CE;
-      --green-paid: #2E7D32;
-      --orange-pending: #E65100;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เสมียนอีเว๊นนน</title>
+    <!-- Google Fonts: เพิ่มฟอนต์ Prompt และ Playfair Display ให้เข้ากับธีม -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
+        body {
+            background-color: #ede8e1;
+            color: #3d2314;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 10px;
+        }
 
-    body {
-      background-color: #121212;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px 0;
-    }
+        .app-card {
+            background: #fbf9f5;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(61, 35, 20, 0.12);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e2dacd;
+        }
 
-    .app-container {
-      width: 100%;
-      max-width: 440px;
-      background-color: var(--bg-color);
-      min-height: 850px;
-      border-radius: 28px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
+        .header-stripe {
+            height: 12px;
+            background: #3d2314;
+        }
 
-    /* Header Section */
-    .app-header {
-      padding: 24px 20px 14px;
-      text-align: center;
-      background: #FFF;
-      border-bottom: 2px solid var(--border-color);
-    }
+        .content {
+            padding: 28px 24px;
+        }
 
-    /* เด่น ใหญ่ เกร๋ */
-    .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 900;
-      color: var(--primary-red);
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      text-shadow: 1px 1px 0px rgba(163, 29, 29, 0.15);
-    }
+        /* หัวข้อหลัก ปรับฟอนต์ให้วินเทจและสวยงามขึ้น */
+        .brand-title {
+            font-family: 'Playfair Display', 'Prompt', serif;
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            color: #3d2314;
+        }
 
-    .event-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 6px;
-    }
+        .sub-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8c6e5a;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
 
-    .event-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        .section-box {
+            background: #f5f0e8;
+            border: 1px solid #e6ded3;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-    /* Tab Bar Navigation */
-    .nav-tabs {
-      display: flex;
-      background: #EFE6D8;
-      border-bottom: 2px solid var(--border-color);
-    }
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #3d2314;
+            padding-bottom: 8px;
+            color: #3d2314;
+        }
 
-    .nav-tab-btn {
-      flex: 1;
-      padding: 12px 2px;
-      border: none;
-      background: none;
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--text-muted);
-      cursor: pointer;
-      text-transform: uppercase;
-      border-bottom: 3px solid transparent;
-      transition: all 0.2s;
-    }
+        /* Form Inputs */
+        .input-group {
+            margin-bottom: 14px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            color: #5c3c28;
+            letter-spacing: 0.5px;
+        }
+        .input-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d8ccc0;
+            border-radius: 10px;
+            font-size: 14px;
+            background: #ffffff;
+            color: #3d2314;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .input-control:focus {
+            border-color: #3d2314;
+            box-shadow: 0 0 0 3px rgba(61, 35, 20, 0.08);
+        }
 
-    .nav-tab-btn.active {
-      color: var(--primary-red);
-      border-bottom-color: var(--primary-red);
-      background: var(--bg-color);
-    }
+        .flex-row {
+            display: flex;
+            gap: 10px;
+        }
 
-    /* Content Area */
-    .content-area {
-      flex: 1;
-      padding: 18px 20px;
-      overflow-y: auto;
-    }
+        .btn {
+            background: #3d2314;
+            color: #fbf9f5;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+        .btn:hover {
+            background: #5c3c28;
+            transform: translateY(-1px);
+        }
 
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--primary-red);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin: 16px 0 10px;
-    }
+        /* Friends Tag List */
+        .friends-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #d8ccc0;
+            padding: 5px 12px 5px 5px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .chip img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: #eee;
+        }
+        .chip .remove-btn {
+            margin-left: 8px;
+            cursor: pointer;
+            color: #c0392b;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1;
+        }
 
-    /* Forms & Inputs */
-    .form-group { margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 11px; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-    .form-control {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      font-size: 13px;
-      outline: none;
-      background: #FFF;
-      color: var(--text-dark);
-    }
+        /* Item Row in List */
+        .item-card {
+            background: #ffffff;
+            border: 1px solid #d8ccc0;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .item-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .item-tag {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+        }
+        .tag-food { background: #fbe3d5; color: #a04000; }
+        .tag-drink { background: #e0f2fe; color: #0369a1; }
 
-    .row-inputs { display: flex; gap: 8px; }
+        .select-sharers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #e6ded3;
+        }
+        .avatar-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.25;
+            filter: grayscale(100%);
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .avatar-toggle.selected {
+            opacity: 1;
+            filter: grayscale(0%);
+            border-color: #3d2314;
+            transform: scale(1.1);
+        }
 
-    /* Top Spender Card */
-    .top-spender-card {
-      background-color: var(--primary-red);
-      color: white;
-      border-radius: 18px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-      box-shadow: 0 8px 16px rgba(163, 29, 29, 0.25);
-    }
+        /* Divide Cost Summary Card */
+        .person-summary-card {
+            background: #ffffff;
+            border: 1px solid #d8ccc0;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+        .person-summary-card.is-paid {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+        .person-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .person-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #f5f0e8;
+        }
+        .person-name {
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .paid-badge {
+            font-size: 10px;
+            background: #22c55e;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+        .person-breakdown {
+            font-size: 12px;
+            color: #7a5e4d;
+            margin-top: 2px;
+        }
+        .person-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .person-total {
+            font-weight: 800;
+            font-size: 18px;
+            color: #3d2314;
+        }
 
-    .top-spender-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background-color: #FFF;
-      border: 2px solid #FFF;
-      object-fit: cover;
-    }
+        .paid-checkbox-label {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            user-select: none;
+            color: #5c3c28;
+            font-weight: 600;
+        }
+        .paid-checkbox-label input {
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            accent-color: #22c55e;
+        }
 
-    .top-spender-badge {
-      font-family: 'Syne', sans-serif;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 2px 8px;
-      border-radius: 8px;
-      display: inline-block;
-    }
+        /* Grand Total Box */
+        .grand-total-box {
+            background: #3d2314;
+            color: #fbf9f5;
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+        }
+        .grand-total-box .price {
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+        }
 
-    .top-spender-name { font-size: 18px; font-weight: 700; margin-top: 2px; }
-    .top-spender-amount { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #FFD700; }
-
-    /* Friend Chips */
-    .friends-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .friend-chip {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      padding: 4px 10px 4px 6px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      user-select: none;
-    }
-    .friend-chip.selected {
-      background: var(--primary-red);
-      color: white;
-      border-color: var(--primary-red);
-    }
-    .friend-chip img { width: 24px; height: 24px; border-radius: 50%; background: #EEE; }
-
-    /* Friend Card */
-    .friend-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .friend-avatar { width: 46px; height: 46px; border-radius: 50%; background: #F0F0F0; }
-    .friend-details { flex: 1; }
-    .friend-name { font-size: 15px; font-weight: 700; color: var(--text-dark); }
-    .item-breakdown { font-size: 11px; color: var(--text-muted); }
-    .total-amount { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--primary-red); }
-
-    /* Paid / Pending Status Toggle */
-    .status-btn {
-      font-family: 'Syne', sans-serif;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      border: none;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .status-btn.pending { background: #FFF3E0; color: var(--orange-pending); border: 1px solid #FFE0B2; }
-    .status-btn.paid { background: #E8F5E9; color: var(--green-paid); border: 1px solid #C8E6C9; }
-
-    /* Buttons */
-    .btn {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border: none;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: opacity 0.2s;
-    }
-    .btn-primary { background: var(--primary-red); color: white; }
-    .btn-secondary { background: #2C1810; color: white; margin-top: 8px; }
-    .btn-danger { background: #D32F2F; color: white; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-family: 'Outfit', sans-serif; }
-
-    /* Payment Box */
-    .payment-box {
-      background: #FFF;
-      border: 2px dashed var(--primary-red);
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      margin: 18px 0;
-    }
-    .payment-qr-img {
-      width: 140px;
-      height: 140px;
-      object-fit: contain;
-      margin: 10px auto;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      display: block;
-    }
-
-    /* Log Card */
-    .log-card {
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-
-    .badge-type {
-      font-size: 9px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-family: 'Syne', sans-serif;
-    }
-    .badge-food { background: #FFE0B2; color: #E65100; }
-    .badge-drink { background: #E1F5FE; color: #0288D1; }
-
-    .view-tab { display: none; }
-    .view-tab.active { display: block; }
-  </style>
+        /* Payment Box */
+        .payment-box {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px dashed #d8ccc0;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Header Section -->
-    <header class="app-header">
-      <div class="brand-title">เสมียร อีเว๊นนนนนนนนน</div>
-      <div class="event-title" id="display-event-name">NEW EVENT</div>
-      <div class="event-meta">
-        <span id="display-event-date">SELECT DATE</span> • CLERK: <span id="display-clerk-name">KHUN.NAN</span>
-      </div>
-    </header>
+    <div class="app-card">
+        <div class="header-stripe"></div>
 
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs">
-      <button class="nav-tab-btn active" id="btn-tab-setup" onclick="switchTab('tab-setup')">1. SETUP</button>
-      <button class="nav-tab-btn" id="btn-tab-summary" onclick="switchTab('tab-summary')">2. SUMMARY</button>
-      <button class="nav-tab-btn" id="btn-tab-logs" onclick="switchTab('tab-logs')">3. LOGS</button>
-      <button class="nav-tab-btn" id="btn-tab-alltime" onclick="switchTab('tab-alltime')">4. ALL-TIME</button>
-    </nav>
+        <div class="content">
+            <!-- Header -->
+            <div class="brand-title">เสมียนอีเว๊นนน</div>
+            <div class="sub-title">(Friend Food Splitting System)</div>
 
-    <div class="content-area">
-      
-      <!-- TAB 1: EVENT SETUP -->
-      <div id="tab-setup" class="view-tab active">
-        <div class="section-title">1. Event Info</div>
-        <div class="form-group">
-          <label>Event Name</label>
-          <input type="text" id="input-event-name" class="form-control" placeholder="e.g., Golden Hour Dinner" onchange="updateHeaderInfo()">
+            <!-- 1. Event Setup -->
+            <div class="section-box">
+                <div class="section-title">
+                    <span>1. Event Setup</span>
+                </div>
+
+                <div class="flex-row" style="margin-bottom: 12px;">
+                    <div style="flex: 2;">
+                        <input type="text" id="event-name" class="input-control" placeholder="ชื่อ Event (เช่น ปาร์ตี้สังสรรค์)">
+                    </div>
+                    <div style="flex: 1.2;">
+                        <input type="date" id="event-date" class="input-control">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>เพิ่มเพื่อนที่มาร่วมทาน</label>
+                    <div class="flex-row">
+                        <input type="text" id="friend-name-input" class="input-control" placeholder="พิมพ์ชื่อเพื่อน..." onkeypress="handleFriendKeyPress(event)">
+                        <button class="btn" onclick="addFriend()">+ เพิ่มเพื่อน</button>
+                    </div>
+                </div>
+
+                <div class="friends-chips" id="friends-chips-container"></div>
+            </div>
+
+            <!-- Add Food/Drink Items -->
+            <div class="section-box">
+                <div class="section-title">
+                    <span>รายการอาหาร & เครื่องดื่ม</span>
+                </div>
+
+                <div class="input-group">
+                    <div class="flex-row" style="margin-bottom: 8px;">
+                        <input type="text" id="item-name-input" class="input-control" placeholder="ชื่อรายการ (เช่น ม็อกเทล)" style="flex: 2;">
+                        <select id="item-type-select" class="input-control" style="flex: 1;">
+                            <option value="food">Food</option>
+                            <option value="drink">Drink</option>
+                        </select>
+                    </div>
+                    <div class="flex-row">
+                        <input type="number" id="item-cost-input" class="input-control" placeholder="ราคา (บาท)" style="flex: 2;">
+                        <button class="btn" onclick="addItem()">+ เพิ่มรายการ</button>
+                    </div>
+                </div>
+
+                <div id="items-list-container"></div>
+
+                <div class="grand-total-box">
+                    <span style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Total Cost</span>
+                    <span class="price" id="grand-total-display">0 ฿</span>
+                </div>
+            </div>
+
+            <!-- 2. Divide Cost Per Person -->
+            <div class="section-box">
+                <div class="section-title">2. Divide Cost Per Person</div>
+                <div id="summary-list-container"></div>
+            </div>
+
+            <!-- 3. Payment -->
+            <div class="section-box" style="margin-bottom: 0;">
+                <div class="section-title">3. Payment (โอนเงิน)</div>
+                <div class="payment-box">
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label>ข้อมูลบัญชีรับเงิน (คุณแนน)</label>
+                        <input type="text" id="pay-name" class="input-control" value="คุณแนน (Nan)" placeholder="ชื่อผู้รับโอน" style="margin-bottom: 8px;">
+                        <input type="text" id="pay-account" class="input-control" placeholder="เลขพร้อมเพย์ / บัญชีธนาคาร" value="08X-XXX-XXXX">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label>Date</label>
-          <input type="date" id="input-event-date" class="form-control" onchange="updateHeaderInfo()">
-        </div>
-
-        <div class="section-title">2. Payment & Clerk Settings</div>
-        <div class="form-group">
-          <label>Clerk Name (Host)</label>
-          <input type="text" id="input-clerk-name" class="form-control" value="Khun.Nan" placeholder="e.g., Khun.Nan" onchange="updateHeaderInfo()">
-        </div>
-        <div class="form-group">
-          <label>PromptPay Number / ID</label>
-          <input type="text" id="input-promptpay-no" class="form-control" value="081-234-5678" placeholder="e.g., 081-234-5678">
-        </div>
-        <div class="form-group">
-          <label>Upload PromptPay QR Image</label>
-          <input type="file" id="input-qr-file" class="form-control" accept="image/*" onchange="handleQRUpload(event)">
-        </div>
-
-        <div class="section-title">3. Add Friends (DiceBear Avatars)</div>
-        <div class="form-group row-inputs">
-          <input type="text" id="input-friend-name" class="form-control" placeholder="Friend's name">
-          <button class="btn btn-primary" style="width: 80px;" onclick="addFriend()">+ ADD</button>
-        </div>
-        <div id="friends-setup-list" style="margin-bottom: 15px;"></div>
-
-        <div class="section-title">4. Add Items & Split</div>
-        <div class="form-group">
-          <label>Item Name & Type</label>
-          <div class="row-inputs">
-            <input type="text" id="input-item-name" class="form-control" placeholder="e.g., Wine / Steak">
-            <select id="input-item-type" class="form-control" style="width: 100px;">
-              <option value="Food">Food</option>
-              <option value="Drink">Drink</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Price (฿)</label>
-          <input type="number" id="input-item-price" class="form-control" placeholder="0.00">
-        </div>
-        <div class="form-group">
-          <label>Shared By (Select Friends)</label>
-          <div class="friends-chips" id="item-friends-select">
-            <div style="font-size: 12px; color: var(--text-muted);">Please add friends first</div>
-          </div>
-        </div>
-        <button class="btn btn-primary" onclick="addItem()">+ ADD ITEM</button>
-
-        <div class="section-title">Item List</div>
-        <div id="items-setup-list" style="margin-bottom: 15px;"></div>
-
-        <button class="btn btn-secondary" style="padding: 14px;" onclick="calculateAndShowSummary()">🚀 CALCULATE & SUMMARY</button>
-      </div>
-
-      <!-- TAB 2: SUMMARY -->
-      <div id="tab-summary" class="view-tab">
-        <!-- Top Spender -->
-        <div class="top-spender-card">
-          <img id="top-spender-img" class="top-spender-avatar" src="https://api.dicebear.com/7.x/personas/svg?seed=placeholder" alt="Top Spender">
-          <div>
-            <span class="top-spender-badge">👑 EVENT TOP SPENDER</span>
-            <div class="top-spender-name" id="top-spender-name">-</div>
-            <div class="top-spender-amount" id="top-spender-amount">฿0.00</div>
-          </div>
-        </div>
-
-        <div class="section-title">Friends Breakdown</div>
-        <div id="summary-friends-list"></div>
-
-        <!-- Dynamic Payment Section -->
-        <div class="payment-box">
-          <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-dark); text-transform: uppercase;">PROMPTPAY PAYMENT</div>
-          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
-            Account: <span id="summary-clerk-name">Khun.Nan</span> (<span id="summary-promptpay-no">081-234-5678</span>)
-          </div>
-          <img id="summary-qr-img" class="payment-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY_0812345678" alt="PromptPay QR">
-        </div>
-
-        <button class="btn btn-primary" onclick="finishAndSaveEvent()">✅ SAVE EVENT LOG & FINISH</button>
-        <button class="btn btn-secondary" onclick="switchTab('tab-setup')">✏️ EDIT EVENT</button>
-      </div>
-
-      <!-- TAB 3: LOGS -->
-      <div id="tab-logs" class="view-tab">
-        <div class="section-title">Event Logs History</div>
-        <div id="logs-container"></div>
-        
-        <button class="btn btn-primary" style="margin-top: 15px;" onclick="startNewEvent()">🏠 HOME / NEW EVENT</button>
-        <button class="btn btn-secondary" onclick="switchTab('tab-alltime')">📊 ALL-TIME SUMMARY</button>
-      </div>
-
-      <!-- TAB 4: ALL-TIME SPENDER SUMMARY -->
-      <div id="tab-alltime" class="view-tab">
-        <div class="top-spender-card" style="background: #2C1810;">
-          <img id="alltime-top-img" class="top-spender-avatar" src="https://api.dicebear.com/7.x/personas/svg?seed=champion" alt="All-Time Top">
-          <div>
-            <span class="top-spender-badge" style="background: #FFD700; color: #000;">🏆 ALL-TIME TOP SPENDER</span>
-            <div class="top-spender-name" id="alltime-top-name">-</div>
-            <div class="top-spender-amount" id="alltime-top-amount">฿0.00</div>
-          </div>
-        </div>
-
-        <div class="section-title">All-Time Cumulative Spending</div>
-        <div id="alltime-list-container"></div>
-
-        <button class="btn btn-primary" style="margin-top: 15px;" onclick="startNewEvent()">🏠 HOME / NEW EVENT</button>
-      </div>
-
     </div>
-  </div>
 
-  <script>
-    // State Data
-    let friends = [];
-    let items = [];
-    let selectedFriendsForItem = [];
-    let currentCalculatedData = [];
-    let uploadedQRDataURL = null;
+    <script>
+        document.getElementById('event-date').valueAsDate = new Date();
 
-    // Switch View Tabs
-    function switchTab(tabId) {
-      document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(tabId).classList.add('active');
-      document.getElementById(`btn-${tabId}`).classList.add('active');
+        const avatarStyles = ['lorelei', 'notionists', 'adventurer', 'fun-emoji', 'personas', 'big-ears'];
 
-      if(tabId === 'tab-alltime') renderAllTimeSummary();
-    }
+        let friends = [];
+        let items = [];
 
-    function updateHeaderInfo() {
-      const name = document.getElementById('input-event-name').value.trim() || 'NEW EVENT';
-      const date = document.getElementById('input-event-date').value || 'SELECT DATE';
-      const clerk = document.getElementById('input-clerk-name').value.trim() || 'KHUN.NAN';
+        function addFriend() {
+            const input = document.getElementById('friend-name-input');
+            const name = input.value.trim();
+            if (!name) return;
 
-      document.getElementById('display-event-name').innerText = name;
-      document.getElementById('display-event-date').innerText = date;
-      document.getElementById('display-clerk-name').innerText = clerk;
-    }
+            const randomStyle = avatarStyles[Math.floor(Math.random() * avatarStyles.length)];
+            const newFriend = {
+                id: 'f_' + Date.now(),
+                name: name,
+                avatar: `https://api.dicebear.com/7.x/${randomStyle}/svg?seed=${encodeURIComponent(name + Date.now())}`,
+                isPaid: false
+            };
 
-    // Handle File Upload for Custom PromptPay QR
-    function handleQRUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          uploadedQRDataURL = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+            friends.push(newFriend);
+            input.value = '';
 
-    // Add Friend with DiceBear Avatar
-    function addFriend() {
-      const nameInput = document.getElementById('input-friend-name');
-      const name = nameInput.value.trim();
-      if (!name) return alert('Please enter friend name');
+            items.forEach(item => item.sharedBy.push(newFriend.id));
 
-      const seed = encodeURIComponent(name + '_' + Math.random());
-      const avatarUrl = `https://api.dicebear.com/7.x/personas/svg?seed=${seed}`;
-
-      friends.push({ id: Date.now(), name, avatar: avatarUrl });
-      nameInput.value = '';
-      renderFriendsSetup();
-      renderItemFriendsSelector();
-    }
-
-    function removeFriend(id) {
-      friends = friends.filter(f => f.id !== id);
-      selectedFriendsForItem = selectedFriendsForItem.filter(fId => fId !== id);
-      renderFriendsSetup();
-      renderItemFriendsSelector();
-    }
-
-    function renderFriendsSetup() {
-      const container = document.getElementById('friends-setup-list');
-      container.innerHTML = friends.map(f => `
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #FFF; padding: 6px 10px; border-radius: 8px; margin-bottom: 6px; border: 1px solid var(--border-color);">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <img src="${f.avatar}" style="width:28px; height:28px; border-radius: 50%;">
-            <span style="font-size: 13px; font-weight: 600;">${f.name}</span>
-          </div>
-          <button class="btn-danger" onclick="removeFriend(${f.id})">REMOVE</button>
-        </div>
-      `).join('');
-    }
-
-    function renderItemFriendsSelector() {
-      const container = document.getElementById('item-friends-select');
-      if (friends.length === 0) {
-        container.innerHTML = '<div style="font-size: 12px; color: var(--text-muted);">Please add friends first</div>';
-        return;
-      }
-      container.innerHTML = friends.map(f => {
-        const isSelected = selectedFriendsForItem.includes(f.id);
-        return `
-          <div class="friend-chip ${isSelected ? 'selected' : ''}" onclick="toggleFriendForOption(${f.id})">
-            <img src="${f.avatar}">
-            <span>${f.name}</span>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleFriendForOption(id) {
-      if (selectedFriendsForItem.includes(id)) {
-        selectedFriendsForItem = selectedFriendsForItem.filter(fId => fId !== id);
-      } else {
-        selectedFriendsForItem.push(id);
-      }
-      renderItemFriendsSelector();
-    }
-
-    // Add Item
-    function addItem() {
-      const name = document.getElementById('input-item-name').value.trim();
-      const type = document.getElementById('input-item-type').value;
-      const price = parseFloat(document.getElementById('input-item-price').value);
-
-      if (!name || isNaN(price) || price <= 0) return alert('Please enter valid item name and price');
-      if (selectedFriendsForItem.length === 0) return alert('Please select at least 1 friend who shared this item');
-
-      items.push({
-        id: Date.now(),
-        name,
-        type,
-        price,
-        sharedWith: [...selectedFriendsForItem]
-      });
-
-      document.getElementById('input-item-name').value = '';
-      document.getElementById('input-item-price').value = '';
-      selectedFriendsForItem = [];
-      renderItemFriendsSelector();
-      renderItemsSetup();
-    }
-
-    function removeItem(id) {
-      items = items.filter(i => i.id !== id);
-      renderItemsSetup();
-    }
-
-    function renderItemsSetup() {
-      const container = document.getElementById('items-setup-list');
-      container.innerHTML = items.map(i => `
-        <div style="background: #FFF; padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; border: 1px solid var(--border-color); font-size: 12px;">
-          <div style="display: flex; justify-content: space-between; font-weight: 700;">
-            <span><span class="badge-type ${i.type === 'Food' ? 'badge-food' : 'badge-drink'}">${i.type}</span> ${i.name}</span>
-            <span style="color: var(--primary-red);">฿${i.price.toLocaleString()}</span>
-          </div>
-          <div style="color: var(--text-muted); font-size: 11px; margin-top: 4px; display: flex; justify-content: space-between; align-items: center;">
-            <span>Shared by: ${i.sharedWith.length} people</span>
-            <button class="btn-danger" onclick="removeItem(${i.id})">DELETE</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // Calculation Engine
-    function calculateAndShowSummary() {
-      if (friends.length === 0) return alert('Please add at least 1 friend');
-
-      updateHeaderInfo();
-
-      const clerkName = document.getElementById('input-clerk-name').value.trim() || 'Khun.Nan';
-      const promptPayNo = document.getElementById('input-promptpay-no').value.trim() || '081-234-5678';
-
-      document.getElementById('summary-clerk-name').innerText = clerkName;
-      document.getElementById('summary-promptpay-no').innerText = promptPayNo;
-
-      // QR Image Logic
-      const qrImgEl = document.getElementById('summary-qr-img');
-      if (uploadedQRDataURL) {
-        qrImgEl.src = uploadedQRDataURL;
-      } else {
-        const cleanNo = promptPayNo.replace(/[^0-9]/g, '');
-        qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY_${cleanNo}`;
-      }
-
-      currentCalculatedData = friends.map(f => {
-        let food = 0;
-        let drink = 0;
-
-        items.forEach(item => {
-          if (item.sharedWith.includes(f.id)) {
-            const splitPrice = item.price / item.sharedWith.length;
-            if (item.type === 'Food') food += splitPrice;
-            if (item.type === 'Drink') drink += splitPrice;
-          }
-        });
-
-        return {
-          ...f,
-          food,
-          drink,
-          total: food + drink
-        };
-      });
-
-      // Find Event Top Spender
-      let topSpender = currentCalculatedData.reduce((prev, current) => (prev && prev.total > current.total) ? prev : current, null);
-
-      if (topSpender && topSpender.total > 0) {
-        document.getElementById('top-spender-name').innerText = topSpender.name;
-        document.getElementById('top-spender-amount').innerText = `฿${topSpender.total.toFixed(2)}`;
-        document.getElementById('top-spender-img').src = topSpender.avatar;
-      } else {
-        document.getElementById('top-spender-name').innerText = '-';
-        document.getElementById('top-spender-amount').innerText = '฿0.00';
-      }
-
-      // Render Summary Friend Cards
-      const container = document.getElementById('summary-friends-list');
-      container.innerHTML = currentCalculatedData.map(f => `
-        <div class="friend-card">
-          <img class="friend-avatar" src="${f.avatar}">
-          <div class="friend-details">
-            <div class="friend-name">${f.name}</div>
-            <div class="item-breakdown">Food: ฿${f.food.toFixed(2)} | Drink: ฿${f.drink.toFixed(2)}</div>
-            <div class="total-amount">Total: ฿${f.total.toFixed(2)}</div>
-          </div>
-          <button class="status-btn pending" id="status-btn-${f.id}" onclick="toggleStatus(${f.id})">
-            ⏳ PENDING
-          </button>
-        </div>
-      `).join('');
-
-      switchTab('tab-summary');
-    }
-
-    function toggleStatus(id) {
-      const btn = document.getElementById(`status-btn-${id}`);
-      if (btn.classList.contains('pending')) {
-        btn.classList.remove('pending');
-        btn.classList.add('paid');
-        btn.innerText = '✓ PAID';
-      } else {
-        btn.classList.remove('paid');
-        btn.classList.add('pending');
-        btn.innerText = '⏳ PENDING';
-      }
-    }
-
-    // Save Log & Finish
-    function finishAndSaveEvent() {
-      const name = document.getElementById('display-event-name').innerText;
-      const date = document.getElementById('display-event-date').innerText;
-      const totalAmount = items.reduce((sum, i) => sum + i.price, 0);
-
-      const logs = JSON.parse(localStorage.getItem('event_logs') || '[]');
-      logs.unshift({
-        id: Date.now(),
-        name,
-        date,
-        totalAmount,
-        friendDetails: currentCalculatedData
-      });
-
-      localStorage.setItem('event_logs', JSON.stringify(logs));
-      alert('Event Log Saved Successfully!');
-      renderLogs();
-      switchTab('tab-logs');
-    }
-
-    function startNewEvent() {
-      friends = [];
-      items = [];
-      selectedFriendsForItem = [];
-      currentCalculatedData = [];
-      uploadedQRDataURL = null;
-      
-      document.getElementById('input-event-name').value = '';
-      document.getElementById('input-event-date').value = '';
-      document.getElementById('input-qr-file').value = '';
-      updateHeaderInfo();
-
-      renderFriendsSetup();
-      renderItemsSetup();
-      renderItemFriendsSelector();
-
-      switchTab('tab-setup');
-    }
-
-    function renderLogs() {
-      const logs = JSON.parse(localStorage.getItem('event_logs') || '[]');
-      const container = document.getElementById('logs-container');
-
-      if (logs.length === 0) {
-        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">No event logs saved yet.</div>';
-        return;
-      }
-
-      container.innerHTML = logs.map(l => `
-        <div class="log-card">
-          <div style="display: flex; justify-content: space-between; font-weight: 700;">
-            <span style="color: var(--primary-red); font-family: 'Syne', sans-serif;">${l.name}</span>
-            <span style="font-family: 'Syne', sans-serif;">฿${l.totalAmount.toLocaleString()}</span>
-          </div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
-            Date: ${l.date} | Friends: ${l.friendDetails ? l.friendDetails.length : 0} people
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // All-Time Summary Calculation
-    function renderAllTimeSummary() {
-      const logs = JSON.parse(localStorage.getItem('event_logs') || '[]');
-      const container = document.getElementById('alltime-list-container');
-
-      if (logs.length === 0) {
-        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">No logs found for calculation.</div>';
-        document.getElementById('alltime-top-name').innerText = '-';
-        document.getElementById('alltime-top-amount').innerText = '฿0.00';
-        return;
-      }
-
-      const summaryMap = {};
-
-      logs.forEach(log => {
-        if (log.friendDetails) {
-          log.friendDetails.forEach(f => {
-            const key = f.name.toLowerCase().trim();
-            if (!summaryMap[key]) {
-              summaryMap[key] = {
-                name: f.name,
-                avatar: f.avatar,
-                totalFood: 0,
-                totalDrink: 0,
-                grandTotal: 0,
-                eventCount: 0
-              };
-            }
-            summaryMap[key].totalFood += f.food;
-            summaryMap[key].totalDrink += f.drink;
-            summaryMap[key].grandTotal += f.total;
-            summaryMap[key].eventCount += 1;
-          });
+            updateUI();
         }
-      });
 
-      const allTimeList = Object.values(summaryMap).sort((a, b) => b.grandTotal - a.grandTotal);
+        function handleFriendKeyPress(e) {
+            if (e.key === 'Enter') addFriend();
+        }
 
-      if (allTimeList.length > 0) {
-        const top = allTimeList[0];
-        document.getElementById('alltime-top-name').innerText = top.name;
-        document.getElementById('alltime-top-amount').innerText = `฿${top.grandTotal.toFixed(2)}`;
-        document.getElementById('alltime-top-img').src = top.avatar;
-      }
+        function removeFriend(friendId) {
+            friends = friends.filter(f => f.id !== friendId);
+            items.forEach(item => {
+                item.sharedBy = item.sharedBy.filter(id => id !== friendId);
+            });
+            updateUI();
+        }
 
-      container.innerHTML = allTimeList.map(person => `
-        <div class="friend-card">
-          <img class="friend-avatar" src="${person.avatar}">
-          <div class="friend-details">
-            <div class="friend-name">${person.name} <span style="font-size: 10px; font-weight: normal; color: var(--text-muted);">(${person.eventCount} events)</span></div>
-            <div class="item-breakdown">Food: ฿${person.totalFood.toFixed(2)} | Drink: ฿${person.totalDrink.toFixed(2)}</div>
-            <div class="total-amount">Grand Total: ฿${person.grandTotal.toFixed(2)}</div>
-          </div>
-        </div>
-      `).join('');
-    }
+        function addItem() {
+            const nameInput = document.getElementById('item-name-input');
+            const costInput = document.getElementById('item-cost-input');
+            const typeSelect = document.getElementById('item-type-select');
 
-    renderLogs();
-  </script>
+            const name = nameInput.value.trim();
+            const cost = parseFloat(costInput.value);
+            const type = typeSelect.value;
+
+            if (!name || isNaN(cost) || cost <= 0) return;
+
+            const newItem = {
+                id: 'i_' + Date.now(),
+                name: name,
+                type: type,
+                cost: cost,
+                sharedBy: friends.map(f => f.id)
+            };
+
+            items.push(newItem);
+            nameInput.value = '';
+            costInput.value = '';
+            updateUI();
+        }
+
+        function toggleShare(itemId, friendId) {
+            const item = items.find(i => i.id === itemId);
+            if (item) {
+                const index = item.sharedBy.indexOf(friendId);
+                if (index > -1) {
+                    item.sharedBy.splice(index, 1);
+                } else {
+                    item.sharedBy.push(friendId);
+                }
+                updateUI();
+            }
+        }
+
+        function togglePaid(friendId) {
+            const friend = friends.find(f => f.id === friendId);
+            if (friend) {
+                friend.isPaid = !friend.isPaid;
+                updateUI();
+            }
+        }
+
+        function removeItem(itemId) {
+            items = items.filter(i => i.id !== itemId);
+            updateUI();
+        }
+
+        function updateUI() {
+            renderFriendsChips();
+            renderItemsList();
+            calculateAndRenderSummary();
+        }
+
+        function renderFriendsChips() {
+            const container = document.getElementById('friends-chips-container');
+            if (friends.length === 0) {
+                container.innerHTML = '<span style="font-size:12px; color:#a08d80;">ยังไม่มีรายชื่อเพื่อน พิมพ์ชื่อแล้วกดเพิ่มด้านบนได้เลย</span>';
+                return;
+            }
+            container.innerHTML = friends.map(f => `
+                <div class="chip">
+                    <img src="${f.avatar}" alt="${f.name}">
+                    <span>${f.name}</span>
+                    <span class="remove-btn" onclick="removeFriend('${f.id}')">&times;</span>
+                </div>
+            `).join('');
+        }
+
+        function renderItemsList() {
+            const container = document.getElementById('items-list-container');
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                container.innerHTML = '<p style="font-size:12px; color:#a08d80; text-align:center; padding:10px;">ยังไม่มีรายการอาหาร</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const tagClass = item.type === 'food' ? 'tag-food' : 'tag-drink';
+                const avatarsHTML = friends.map(f => {
+                    const isSelected = item.sharedBy.includes(f.id) ? 'selected' : '';
+                    return `
+                        <img src="${f.avatar}" 
+                             title="${f.name}" 
+                             class="avatar-toggle ${isSelected}" 
+                             onclick="toggleShare('${item.id}', '${f.id}')">
+                    `;
+                }).join('');
+
+                container.innerHTML += `
+                    <div class="item-card">
+                        <div class="item-card-header">
+                            <div>
+                                <span>${item.name}</span>
+                                <span class="item-tag ${tagClass}">${item.type}</span>
+                            </div>
+                            <div>
+                                <span style="margin-right: 8px;">${item.cost.toLocaleString()} ฿</span>
+                                <span style="color:#c0392b; cursor:pointer; font-size:12px;" onclick="removeItem('${item.id}')">ลบ</span>
+                            </div>
+                        </div>
+                        <div class="select-sharers">
+                            ${avatarsHTML.length ? avatarsHTML : '<span style="font-size:11px; color:#aaa;">เพิ่มเพื่อนก่อนเพื่อเลือกคนหาร</span>'}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function calculateAndRenderSummary() {
+            let grandTotal = 0;
+            const totals = {};
+
+            friends.forEach(f => {
+                totals[f.id] = { food: 0, drink: 0, total: 0 };
+            });
+
+            items.forEach(item => {
+                grandTotal += item.cost;
+                const sharersCount = item.sharedBy.length;
+
+                if (sharersCount > 0) {
+                    const costPerPerson = item.cost / sharersCount;
+                    item.sharedBy.forEach(fId => {
+                        if (totals[fId]) {
+                            if (item.type === 'food') {
+                                totals[fId].food += costPerPerson;
+                            } else {
+                                totals[fId].drink += costPerPerson;
+                            }
+                            totals[fId].total += costPerPerson;
+                        }
+                    });
+                }
+            });
+
+            document.getElementById('grand-total-display').innerText = `${grandTotal.toLocaleString()} ฿`;
+
+            const summaryContainer = document.getElementById('summary-list-container');
+            if (friends.length === 0) {
+                summaryContainer.innerHTML = '<p style="font-size:12px; color:#a08d80; text-align:center;">ยังไม่มีข้อมูล</p>';
+                return;
+            }
+
+            summaryContainer.innerHTML = friends.map(f => {
+                const res = totals[f.id] || { food: 0, drink: 0, total: 0 };
+                const paidClass = f.isPaid ? 'is-paid' : '';
+                const paidBadge = f.isPaid ? '<span class="paid-badge">จ่ายแล้ว</span>' : '';
+
+                return `
+                    <div class="person-summary-card ${paidClass}">
+                        <div class="person-left">
+                            <img src="${f.avatar}" class="person-avatar">
+                            <div>
+                                <div class="person-name">
+                                    ${f.name} ${paidBadge}
+                                </div>
+                                <div class="person-breakdown">
+                                    Food: ${res.food.toFixed(0)} ฿ | Drink: ${res.drink.toFixed(0)} ฿
+                                </div>
+                            </div>
+                        </div>
+                        <div class="person-right">
+                            <div class="person-total">${res.total.toFixed(0)} ฿</div>
+                            <label class="paid-checkbox-label">
+                                <input type="checkbox" ${f.isPaid ? 'checked' : ''} onchange="togglePaid('${f.id}')">
+                                โอนแล้ว
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        updateUI();
+    </script>
 </body>
 </html>
