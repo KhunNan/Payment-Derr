@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>เสมียร อีเว๊นนนนนนนนน - Splitmate</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #FAF6EF;
@@ -44,27 +44,33 @@
 
     /* Header Section */
     .app-header {
-      padding: 18px 20px 10px;
+      padding: 24px 20px 14px;
       text-align: center;
       background: #FFF;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 2px solid var(--border-color);
     }
 
+    /* เด่น ใหญ่ เกร๋ */
     .brand-title {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 32px;
+      font-weight: 900;
       color: var(--primary-red);
-      letter-spacing: 0.5px;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      text-shadow: 1px 1px 0px rgba(163, 29, 29, 0.15);
     }
 
     .event-title {
-      font-size: 19px;
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
       font-weight: 800;
-      color: var(--primary-red);
+      color: var(--text-dark);
       text-transform: uppercase;
-      line-height: 1.1;
-      margin-top: 4px;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
     }
 
     .event-meta {
@@ -72,6 +78,8 @@
       color: var(--text-muted);
       margin-top: 4px;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* Tab Bar Navigation */
@@ -83,13 +91,15 @@
 
     .nav-tab-btn {
       flex: 1;
-      padding: 10px 2px;
+      padding: 12px 2px;
       border: none;
       background: none;
+      font-family: 'Syne', sans-serif;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-muted);
       cursor: pointer;
+      text-transform: uppercase;
       border-bottom: 3px solid transparent;
       transition: all 0.2s;
     }
@@ -103,30 +113,32 @@
     /* Content Area */
     .content-area {
       flex: 1;
-      padding: 16px 20px;
+      padding: 18px 20px;
       overflow-y: auto;
     }
 
     .section-title {
-      font-size: 13px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
       font-weight: 800;
       color: var(--primary-red);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 14px 0 8px;
+      letter-spacing: 1.5px;
+      margin: 16px 0 10px;
     }
 
     /* Forms & Inputs */
     .form-group { margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
     .form-control {
       width: 100%;
       padding: 10px 12px;
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      font-size: 14px;
+      font-size: 13px;
       outline: none;
       background: #FFF;
+      color: var(--text-dark);
     }
 
     .row-inputs { display: flex; gap: 8px; }
@@ -136,24 +148,27 @@
       background-color: var(--primary-red);
       color: white;
       border-radius: 18px;
-      padding: 14px 16px;
+      padding: 16px;
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 16px;
-      box-shadow: 0 6px 14px rgba(163, 29, 29, 0.25);
+      margin-bottom: 18px;
+      box-shadow: 0 8px 16px rgba(163, 29, 29, 0.25);
     }
 
     .top-spender-avatar {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background-color: #FFF;
       border: 2px solid #FFF;
+      object-fit: cover;
     }
 
     .top-spender-badge {
+      font-family: 'Syne', sans-serif;
       font-size: 10px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       background: rgba(255, 255, 255, 0.2);
@@ -162,10 +177,10 @@
       display: inline-block;
     }
 
-    .top-spender-name { font-size: 18px; font-weight: 700; }
-    .top-spender-amount { font-size: 20px; font-weight: 800; color: #FFD700; }
+    .top-spender-name { font-size: 18px; font-weight: 700; margin-top: 2px; }
+    .top-spender-amount { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #FFD700; }
 
-    /* Friend Chips / Avatars Selectable */
+    /* Friend Chips */
     .friends-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
     .friend-chip {
       display: flex;
@@ -187,7 +202,7 @@
     }
     .friend-chip img { width: 24px; height: 24px; border-radius: 50%; background: #EEE; }
 
-    /* Cards */
+    /* Friend Card */
     .friend-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -203,16 +218,19 @@
     .friend-details { flex: 1; }
     .friend-name { font-size: 15px; font-weight: 700; color: var(--text-dark); }
     .item-breakdown { font-size: 11px; color: var(--text-muted); }
-    .total-amount { font-size: 13px; font-weight: 800; color: var(--primary-red); }
+    .total-amount { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--primary-red); }
 
     /* Paid / Pending Status Toggle */
     .status-btn {
-      padding: 6px 10px;
+      font-family: 'Syne', sans-serif;
+      padding: 6px 12px;
       border-radius: 16px;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 10px;
+      font-weight: 800;
       cursor: pointer;
       border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .status-btn.pending { background: #FFF3E0; color: var(--orange-pending); border: 1px solid #FFE0B2; }
     .status-btn.paid { background: #E8F5E9; color: var(--green-paid); border: 1px solid #C8E6C9; }
@@ -220,33 +238,56 @@
     /* Buttons */
     .btn {
       width: 100%;
-      padding: 11px;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 12px;
       border: none;
-      font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
       font-size: 13px;
       cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: opacity 0.2s;
     }
     .btn-primary { background: var(--primary-red); color: white; }
-    .btn-secondary { background: #2C1810; color: white; margin-top: 6px; }
-    .btn-danger { background: #D32F2F; color: white; padding: 4px 8px; border-radius: 6px; font-size: 10px; }
+    .btn-secondary { background: #2C1810; color: white; margin-top: 8px; }
+    .btn-danger { background: #D32F2F; color: white; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-family: 'Outfit', sans-serif; }
+
+    /* Payment Box */
+    .payment-box {
+      background: #FFF;
+      border: 2px dashed var(--primary-red);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      margin: 18px 0;
+    }
+    .payment-qr-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin: 10px auto;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      display: block;
+    }
 
     /* Log Card */
     .log-card {
       background: #FFF;
       border: 1px solid var(--border-color);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 12px;
       margin-bottom: 10px;
     }
 
     .badge-type {
-      font-size: 10px;
+      font-size: 9px;
       padding: 2px 6px;
       border-radius: 4px;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
+      font-family: 'Syne', sans-serif;
     }
     .badge-food { background: #FFE0B2; color: #E65100; }
     .badge-drink { background: #E1F5FE; color: #0288D1; }
@@ -258,49 +299,63 @@
 <body>
 
   <div class="app-container">
-    <!-- Header -->
+    <!-- Header Section -->
     <header class="app-header">
       <div class="brand-title">เสมียร อีเว๊นนนนนนนนน</div>
       <div class="event-title" id="display-event-name">NEW EVENT</div>
       <div class="event-meta">
-        <span id="display-event-date">Select Date</span> • Khun.Nan
+        <span id="display-event-date">SELECT DATE</span> • CLERK: <span id="display-clerk-name">KHUN.NAN</span>
       </div>
     </header>
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
-      <button class="nav-tab-btn active" id="btn-tab-setup" onclick="switchTab('tab-setup')">1. Setup</button>
-      <button class="nav-tab-btn" id="btn-tab-summary" onclick="switchTab('tab-summary')">2. Summary</button>
-      <button class="nav-tab-btn" id="btn-tab-logs" onclick="switchTab('tab-logs')">3. Logs</button>
-      <button class="nav-tab-btn" id="btn-tab-alltime" onclick="switchTab('tab-alltime')">4. All-Time Log</button>
+      <button class="nav-tab-btn active" id="btn-tab-setup" onclick="switchTab('tab-setup')">1. SETUP</button>
+      <button class="nav-tab-btn" id="btn-tab-summary" onclick="switchTab('tab-summary')">2. SUMMARY</button>
+      <button class="nav-tab-btn" id="btn-tab-logs" onclick="switchTab('tab-logs')">3. LOGS</button>
+      <button class="nav-tab-btn" id="btn-tab-alltime" onclick="switchTab('tab-alltime')">4. ALL-TIME</button>
     </nav>
 
     <div class="content-area">
       
-      <!-- TAB 1: FORM SETUP -->
+      <!-- TAB 1: EVENT SETUP -->
       <div id="tab-setup" class="view-tab active">
         <div class="section-title">1. Event Info</div>
         <div class="form-group">
           <label>Event Name</label>
-          <input type="text" id="input-event-name" class="form-control" placeholder="e.g., Golden Hour Party" onchange="updateHeaderInfo()">
+          <input type="text" id="input-event-name" class="form-control" placeholder="e.g., Golden Hour Dinner" onchange="updateHeaderInfo()">
         </div>
         <div class="form-group">
           <label>Date</label>
           <input type="date" id="input-event-date" class="form-control" onchange="updateHeaderInfo()">
         </div>
 
-        <div class="section-title">2. Add Friends (DiceBear Avatars)</div>
+        <div class="section-title">2. Payment & Clerk Settings</div>
+        <div class="form-group">
+          <label>Clerk Name (Host)</label>
+          <input type="text" id="input-clerk-name" class="form-control" value="Khun.Nan" placeholder="e.g., Khun.Nan" onchange="updateHeaderInfo()">
+        </div>
+        <div class="form-group">
+          <label>PromptPay Number / ID</label>
+          <input type="text" id="input-promptpay-no" class="form-control" value="081-234-5678" placeholder="e.g., 081-234-5678">
+        </div>
+        <div class="form-group">
+          <label>Upload PromptPay QR Image</label>
+          <input type="file" id="input-qr-file" class="form-control" accept="image/*" onchange="handleQRUpload(event)">
+        </div>
+
+        <div class="section-title">3. Add Friends (DiceBear Avatars)</div>
         <div class="form-group row-inputs">
           <input type="text" id="input-friend-name" class="form-control" placeholder="Friend's name">
-          <button class="btn btn-primary" style="width: 80px;" onclick="addFriend()">+ Add</button>
+          <button class="btn btn-primary" style="width: 80px;" onclick="addFriend()">+ ADD</button>
         </div>
         <div id="friends-setup-list" style="margin-bottom: 15px;"></div>
 
-        <div class="section-title">3. Add Expenses & Split</div>
+        <div class="section-title">4. Add Items & Split</div>
         <div class="form-group">
           <label>Item Name & Type</label>
           <div class="row-inputs">
-            <input type="text" id="input-item-name" class="form-control" placeholder="e.g., Pizza / Beer">
+            <input type="text" id="input-item-name" class="form-control" placeholder="e.g., Wine / Steak">
             <select id="input-item-type" class="form-control" style="width: 100px;">
               <option value="Food">Food</option>
               <option value="Drink">Drink</option>
@@ -312,26 +367,26 @@
           <input type="number" id="input-item-price" class="form-control" placeholder="0.00">
         </div>
         <div class="form-group">
-          <label>Who shared this item? (Click to select)</label>
+          <label>Shared By (Select Friends)</label>
           <div class="friends-chips" id="item-friends-select">
             <div style="font-size: 12px; color: var(--text-muted);">Please add friends first</div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="addItem()">+ Add Item</button>
+        <button class="btn btn-primary" onclick="addItem()">+ ADD ITEM</button>
 
-        <div class="section-title">Added Items List</div>
+        <div class="section-title">Item List</div>
         <div id="items-setup-list" style="margin-bottom: 15px;"></div>
 
-        <button class="btn btn-secondary" style="padding: 14px; font-size: 15px;" onclick="calculateAndShowSummary()">🚀 คำนวณยอดเงิน & ไปหน้า สรุป</button>
+        <button class="btn btn-secondary" style="padding: 14px;" onclick="calculateAndShowSummary()">🚀 CALCULATE & SUMMARY</button>
       </div>
 
-      <!-- TAB 2: EVENT SUMMARY -->
+      <!-- TAB 2: SUMMARY -->
       <div id="tab-summary" class="view-tab">
         <!-- Top Spender -->
         <div class="top-spender-card">
           <img id="top-spender-img" class="top-spender-avatar" src="https://api.dicebear.com/7.x/personas/svg?seed=placeholder" alt="Top Spender">
           <div>
-            <span class="top-spender-badge">👑 Event Top Spender</span>
+            <span class="top-spender-badge">👑 EVENT TOP SPENDER</span>
             <div class="top-spender-name" id="top-spender-name">-</div>
             <div class="top-spender-amount" id="top-spender-amount">฿0.00</div>
           </div>
@@ -340,23 +395,26 @@
         <div class="section-title">Friends Breakdown</div>
         <div id="summary-friends-list"></div>
 
-        <!-- PromptPay Info -->
-        <div style="background: #FFF; border: 2px dashed var(--primary-red); border-radius: 14px; padding: 14px; text-align: center; margin: 15px 0;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--text-dark);">PromptPay Payment</div>
-          <div style="font-size: 12px; color: var(--text-muted);">Khun.Nan (081-234-5678)</div>
+        <!-- Dynamic Payment Section -->
+        <div class="payment-box">
+          <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-dark); text-transform: uppercase;">PROMPTPAY PAYMENT</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+            Account: <span id="summary-clerk-name">Khun.Nan</span> (<span id="summary-promptpay-no">081-234-5678</span>)
+          </div>
+          <img id="summary-qr-img" class="payment-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY_0812345678" alt="PromptPay QR">
         </div>
 
-        <button class="btn btn-primary" onclick="finishAndSaveEvent()">✅ ปิดจบ สรุป Event (Save Log)</button>
-        <button class="btn btn-secondary" onclick="switchTab('tab-setup')">✏️ กลับไปแก้ไขรายการ</button>
+        <button class="btn btn-primary" onclick="finishAndSaveEvent()">✅ SAVE EVENT LOG & FINISH</button>
+        <button class="btn btn-secondary" onclick="switchTab('tab-setup')">✏️ EDIT EVENT</button>
       </div>
 
-      <!-- TAB 3: SAVED LOGS -->
+      <!-- TAB 3: LOGS -->
       <div id="tab-logs" class="view-tab">
-        <div class="section-title">Saved Event Logs History</div>
+        <div class="section-title">Event Logs History</div>
         <div id="logs-container"></div>
         
-        <button class="btn btn-primary" style="margin-top: 15px; padding: 14px;" onclick="startNewEvent()">🏠 กลับหน้าหลัก (Home / Create Event)</button>
-        <button class="btn btn-secondary" onclick="switchTab('tab-alltime')">📊 ดูสรุปยอดรวม All-Time ทุกคน</button>
+        <button class="btn btn-primary" style="margin-top: 15px;" onclick="startNewEvent()">🏠 HOME / NEW EVENT</button>
+        <button class="btn btn-secondary" onclick="switchTab('tab-alltime')">📊 ALL-TIME SUMMARY</button>
       </div>
 
       <!-- TAB 4: ALL-TIME SPENDER SUMMARY -->
@@ -364,29 +422,30 @@
         <div class="top-spender-card" style="background: #2C1810;">
           <img id="alltime-top-img" class="top-spender-avatar" src="https://api.dicebear.com/7.x/personas/svg?seed=champion" alt="All-Time Top">
           <div>
-            <span class="top-spender-badge" style="background: #FFD700; color: #000; font-weight: 800;">🏆 ALL-TIME TOP SPENDER</span>
+            <span class="top-spender-badge" style="background: #FFD700; color: #000;">🏆 ALL-TIME TOP SPENDER</span>
             <div class="top-spender-name" id="alltime-top-name">-</div>
             <div class="top-spender-amount" id="alltime-top-amount">฿0.00</div>
           </div>
         </div>
 
-        <div class="section-title">สรุปรวมค่าใช้จ่ายสะสมของทุกคน</div>
+        <div class="section-title">All-Time Cumulative Spending</div>
         <div id="alltime-list-container"></div>
 
-        <button class="btn btn-primary" style="margin-top: 15px; padding: 14px;" onclick="startNewEvent()">🏠 กลับหน้าหลัก (Home)</button>
+        <button class="btn btn-primary" style="margin-top: 15px;" onclick="startNewEvent()">🏠 HOME / NEW EVENT</button>
       </div>
 
     </div>
   </div>
 
   <script>
-    // Global State
+    // State Data
     let friends = [];
     let items = [];
     let selectedFriendsForItem = [];
     let currentCalculatedData = [];
+    let uploadedQRDataURL = null;
 
-    // Switch View Tabs Function
+    // Switch View Tabs
     function switchTab(tabId) {
       document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
@@ -394,23 +453,36 @@
       document.getElementById(tabId).classList.add('active');
       document.getElementById(`btn-${tabId}`).classList.add('active');
 
-      if(tabId === 'tab-alltime') {
-        renderAllTimeSummary();
-      }
+      if(tabId === 'tab-alltime') renderAllTimeSummary();
     }
 
     function updateHeaderInfo() {
       const name = document.getElementById('input-event-name').value.trim() || 'NEW EVENT';
-      const date = document.getElementById('input-event-date').value || 'Select Date';
+      const date = document.getElementById('input-event-date').value || 'SELECT DATE';
+      const clerk = document.getElementById('input-clerk-name').value.trim() || 'KHUN.NAN';
+
       document.getElementById('display-event-name').innerText = name;
       document.getElementById('display-event-date').innerText = date;
+      document.getElementById('display-clerk-name').innerText = clerk;
+    }
+
+    // Handle File Upload for Custom PromptPay QR
+    function handleQRUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          uploadedQRDataURL = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
     }
 
     // Add Friend with DiceBear Avatar
     function addFriend() {
       const nameInput = document.getElementById('input-friend-name');
       const name = nameInput.value.trim();
-      if (!name) return alert('กรุณากรอกชื่อเพื่อน');
+      if (!name) return alert('Please enter friend name');
 
       const seed = encodeURIComponent(name + '_' + Math.random());
       const avatarUrl = `https://api.dicebear.com/7.x/personas/svg?seed=${seed}`;
@@ -436,7 +508,7 @@
             <img src="${f.avatar}" style="width:28px; height:28px; border-radius: 50%;">
             <span style="font-size: 13px; font-weight: 600;">${f.name}</span>
           </div>
-          <button class="btn-danger" onclick="removeFriend(${f.id})">Remove</button>
+          <button class="btn-danger" onclick="removeFriend(${f.id})">REMOVE</button>
         </div>
       `).join('');
     }
@@ -467,14 +539,14 @@
       renderItemFriendsSelector();
     }
 
-    // Add Item & Split Calculation
+    // Add Item
     function addItem() {
       const name = document.getElementById('input-item-name').value.trim();
       const type = document.getElementById('input-item-type').value;
       const price = parseFloat(document.getElementById('input-item-price').value);
 
-      if (!name || isNaN(price) || price <= 0) return alert('กรุณากรอกชื่อรายการและราคาให้ถูกต้อง');
-      if (selectedFriendsForItem.length === 0) return alert('กรุณาเลือกอย่างน้อย 1 คนที่รับประทานรายการนี้');
+      if (!name || isNaN(price) || price <= 0) return alert('Please enter valid item name and price');
+      if (selectedFriendsForItem.length === 0) return alert('Please select at least 1 friend who shared this item');
 
       items.push({
         id: Date.now(),
@@ -506,7 +578,7 @@
           </div>
           <div style="color: var(--text-muted); font-size: 11px; margin-top: 4px; display: flex; justify-content: space-between; align-items: center;">
             <span>Shared by: ${i.sharedWith.length} people</span>
-            <button class="btn-danger" onclick="removeItem(${i.id})">Delete</button>
+            <button class="btn-danger" onclick="removeItem(${i.id})">DELETE</button>
           </div>
         </div>
       `).join('');
@@ -514,9 +586,24 @@
 
     // Calculation Engine
     function calculateAndShowSummary() {
-      if (friends.length === 0) return alert('กรุณาเพิ่มเพื่อนอย่างน้อย 1 คน');
+      if (friends.length === 0) return alert('Please add at least 1 friend');
 
       updateHeaderInfo();
+
+      const clerkName = document.getElementById('input-clerk-name').value.trim() || 'Khun.Nan';
+      const promptPayNo = document.getElementById('input-promptpay-no').value.trim() || '081-234-5678';
+
+      document.getElementById('summary-clerk-name').innerText = clerkName;
+      document.getElementById('summary-promptpay-no').innerText = promptPayNo;
+
+      // QR Image Logic
+      const qrImgEl = document.getElementById('summary-qr-img');
+      if (uploadedQRDataURL) {
+        qrImgEl.src = uploadedQRDataURL;
+      } else {
+        const cleanNo = promptPayNo.replace(/[^0-9]/g, '');
+        qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY_${cleanNo}`;
+      }
 
       currentCalculatedData = friends.map(f => {
         let food = 0;
@@ -561,7 +648,7 @@
             <div class="total-amount">Total: ฿${f.total.toFixed(2)}</div>
           </div>
           <button class="status-btn pending" id="status-btn-${f.id}" onclick="toggleStatus(${f.id})">
-            ⏳ Pending
+            ⏳ PENDING
           </button>
         </div>
       `).join('');
@@ -574,15 +661,15 @@
       if (btn.classList.contains('pending')) {
         btn.classList.remove('pending');
         btn.classList.add('paid');
-        btn.innerText = '✓ Paid';
+        btn.innerText = '✓ PAID';
       } else {
         btn.classList.remove('paid');
         btn.classList.add('pending');
-        btn.innerText = '⏳ Pending';
+        btn.innerText = '⏳ PENDING';
       }
     }
 
-    // Save Log and Finish Event
+    // Save Log & Finish
     function finishAndSaveEvent() {
       const name = document.getElementById('display-event-name').innerText;
       const date = document.getElementById('display-event-date').innerText;
@@ -598,20 +685,21 @@
       });
 
       localStorage.setItem('event_logs', JSON.stringify(logs));
-      alert('บันทึก Log และปิดจบ Event เรียบร้อยแล้ว!');
+      alert('Event Log Saved Successfully!');
       renderLogs();
       switchTab('tab-logs');
     }
 
-    // Start New Event (Reset Form)
     function startNewEvent() {
       friends = [];
       items = [];
       selectedFriendsForItem = [];
       currentCalculatedData = [];
+      uploadedQRDataURL = null;
       
       document.getElementById('input-event-name').value = '';
       document.getElementById('input-event-date').value = '';
+      document.getElementById('input-qr-file').value = '';
       updateHeaderInfo();
 
       renderFriendsSetup();
@@ -633,8 +721,8 @@
       container.innerHTML = logs.map(l => `
         <div class="log-card">
           <div style="display: flex; justify-content: space-between; font-weight: 700;">
-            <span style="color: var(--primary-red);">${l.name}</span>
-            <span>฿${l.totalAmount.toLocaleString()}</span>
+            <span style="color: var(--primary-red); font-family: 'Syne', sans-serif;">${l.name}</span>
+            <span style="font-family: 'Syne', sans-serif;">฿${l.totalAmount.toLocaleString()}</span>
           </div>
           <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
             Date: ${l.date} | Friends: ${l.friendDetails ? l.friendDetails.length : 0} people
@@ -643,13 +731,13 @@
       `).join('');
     }
 
-    // All-Time Summary Calculation across ALL Events
+    // All-Time Summary Calculation
     function renderAllTimeSummary() {
       const logs = JSON.parse(localStorage.getItem('event_logs') || '[]');
       const container = document.getElementById('alltime-list-container');
 
       if (logs.length === 0) {
-        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">ยังไม่มีประวัติ Event ให้คำนวณ</div>';
+        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">No logs found for calculation.</div>';
         document.getElementById('alltime-top-name').innerText = '-';
         document.getElementById('alltime-top-amount').innerText = '฿0.00';
         return;
@@ -681,7 +769,6 @@
 
       const allTimeList = Object.values(summaryMap).sort((a, b) => b.grandTotal - a.grandTotal);
 
-      // Set All-Time Top Spender
       if (allTimeList.length > 0) {
         const top = allTimeList[0];
         document.getElementById('alltime-top-name').innerText = top.name;
@@ -701,7 +788,6 @@
       `).join('');
     }
 
-    // Initial Load
     renderLogs();
   </script>
 </body>
